@@ -58,6 +58,20 @@ function createHtmlDocument (message) {
 }
 
 /**
+ * Create a minimal JSON document.
+ *
+ * @param {string} message
+ * @private
+ */
+function createJsonDocument (message) {
+  var body = escapeHtml(message)
+    .replace(NEWLINE_REGEXP, '<br>')
+    .replace(DOUBLE_SPACE_REGEXP, ' &nbsp;')
+
+  return JSON.parse('{"message","'+body+'"}') 
+}
+
+/**
  * Module exports.
  * @public
  */
